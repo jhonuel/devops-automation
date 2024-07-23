@@ -1,7 +1,7 @@
 pipeline {
     environment {
         IMAGEN = "jhonuel/myapp"
-        USUARIO = 'USER_DOCKERHUB'
+        USUARIO = 'Dockerid'
     }
     agent any
     stages {
