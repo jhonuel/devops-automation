@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-        maven 'M2_HOME'
+        maven 'M3_HOME'
     }
     environment {
         registry = "jhonuel/darinpope-dockerhub"
