@@ -1,6 +1,6 @@
 pipeline {
     environment {
-        IMAGEN = "jhonuel/myapp"
+        IMAGEN = "jhonuel/test"
         USUARIO = 'Dockerid'
     }
     agent any
