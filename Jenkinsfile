@@ -1,7 +1,10 @@
 pipeline {
     environment {
         IMAGEN = "jhonuel/myapp"
-        USUARIO = 'Dockerid'
+        USUARIO = 'Dockerid' // Jenkins credentials ID for DockerHub
+        SERVER_CREDENTIALS_ID = 'server-username-password-credentials-id' // Jenkins credentials ID for server username/password
+        SERVER_USER = 'dockeradmin'
+        SERVER_IP = '192.168.50.118'
     }
     agent any
     stages {
@@ -32,18 +35,35 @@ pipeline {
                 }
             }
         }
-        stage('Deploy') {
+        stage('Deploy to DockerHub') {
             steps {
                 script {
                     docker.withRegistry('', env.USUARIO) {
-                        newApp.push()
+                        newApp.push("${env.BUILD_NUMBER}")
+                        newApp.push('latest')
+                    }
+                }
+            }
+        }
+        stage('Deploy to Server') {
+            steps {
+                script {
+                    withCredentials([usernamePassword(credentialsId: "${SERVER_CREDENTIALS_ID}", usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                        sh """
+                        sshpass -p $PASSWORD ssh -o StrictHostKeyChecking=no $USERNAME@${SERVER_IP} << EOF
+                        docker pull ${IMAGEN}:${env.BUILD_NUMBER}
+                        docker stop myapp || true
+                        docker rm myapp || true
+                        docker run -d --name myapp -p 80:80 ${IMAGEN}:${env.BUILD_NUMBER}
+                        EOF
+                        """
                     }
                 }
             }
         }
         stage('Clean Up') {
             steps {
-                sh "docker rmi ${env.IMAGEN}:${env.BUILD_NUMBER}"
+                sh "docker rmi ${IMAGEN}:${env.BUILD_NUMBER}"
             }
         }
     }
