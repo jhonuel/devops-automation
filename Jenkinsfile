@@ -2,7 +2,7 @@ pipeline {
     environment {
         IMAGEN = "jhonuel/myapp"
         USUARIO = 'Dockerid' // Jenkins credentials ID for DockerHub
-        SERVER_CREDENTIALS_ID = 'server-username-password-credentials-id' // Jenkins credentials ID for server username/password
+        SERVER_CREDENTIALS_ID = 'server-ssh-credentials-id' // Jenkins credentials ID for server username/password
         SERVER_USER = 'dockeradmin'
         SERVER_IP = '192.168.50.118'
     }
