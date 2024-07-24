@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'printenv'
-                sh 'docker build -t jhonuel/myapp:"$BUILD_ID" .'
+                sh 'docker build . -t jhonuel/myapp:"$BUILD_ID" .'
            //     sh 'docker build . jhonuel/myapp:"$BUILD_ID" .'
             }
         }
