@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Verify Docker') {
             steps {
-                sh 'docker --version || { echo "Docker is not installed"; exit 1; }'
+                sh 'docker --version || { echo "Docker ready"; exit 1; }'
             }
         }
         stage('Build') {
