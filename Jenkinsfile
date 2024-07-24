@@ -1,7 +1,5 @@
 pipeline {
-    agent {
-        label 'docker-enabled'
-    }
+    agent any
 
     stages {
         stage('Test Docker') {
