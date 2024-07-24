@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKERHUB_CREDENTIALS = credentials('jenkins-pwd-01')
+        DOCKERHUB_CREDENTIALS = credentials('Dockerid')
         DOCKERHUB_REPO = 'jhonuel/myapp'
         IMAGE_TAG = "latest"
     }
