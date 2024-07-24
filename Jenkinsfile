@@ -23,15 +23,16 @@ pipeline {
                 }
             }
         }
-        stage('Push to DockerHub') {
-            steps {
-                script {
-                    docker.withRegistry('https://index.docker.io/v1/', 'DOCKERHUB_CREDENTIALS') {
+       // stage('Push to DockerHub') {
+          //  steps {
+           //     script {
+                 //   docker.withRegistry('https://index.docker.io/v1/', 'DOCKERHUB_CREDENTIALS') {
+   //           //      docker.withRegistry('https://index.docker.io/v1/', 'DOCKERHUB_CREDENTIALS') {
                         docker.image("${DOCKERHUB_REPO}:${IMAGE_TAG}").push()
-                    }
-                }
-            }
-        }
+  //   //               }
+      //          }
+     //       }
+     //   }
         stage('Deploy') {
             steps {
                 script {
