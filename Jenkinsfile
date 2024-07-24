@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent {
+        label 'docker-enabled'
+    }
 
     stages {
         stage('Checkout SCM') {
