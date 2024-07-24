@@ -23,7 +23,7 @@ ENV APACHE_LOG_DIR /var/log/apache2
 ENV APACHE_LOCK_DIR /var/lock/apache2
 ENV APACHE_PID_FILE /var/run/apache2.pid
 
-EXPOSE 80
+EXPOSE 81
 
 # Copy site into place.
 ADD app /var/www/site/app
