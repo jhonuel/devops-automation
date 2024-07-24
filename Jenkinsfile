@@ -4,7 +4,10 @@ pipeline {
     environment {
         DOCKERHUB_CREDENTIALS = credentials('Dockerid')
         DOCKERHUB_REPO = 'jhonuel/myapp'
+        SSH_CREDENTIALS_ID = 'ssh-credentials-id'
         IMAGE_TAG = "latest"
+        SERVER_USER = 'dockeradmin'
+        SERVER_HOST = '192.168.50.118'
     }
 
     stages {
@@ -31,16 +34,16 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                // Aquí puedes definir los pasos para desplegar la imagen en tu servidor
-                // Esto podría variar dependiendo de cómo gestiones los despliegues (por ejemplo, docker-compose, kubectl, etc.)
-                sh '''
-                ssh user@your-server << EOF
-                docker pull ${DOCKERHUB_REPO}:${IMAGE_TAG}
-                docker stop myapp || true
-                docker rm myapp || true
-                docker run -d --name your-container ${DOCKERHUB_REPO}:${IMAGE_TAG}
-                EOF
-                '''
+                script {
+                    sh '''
+                    ssh ${SERVER_USER}@${SERVER_HOST} << EOF
+                    docker pull ${DOCKERHUB_REPO}:${IMAGE_TAG}
+                    docker stop your-container || true
+                    docker rm your-container || true
+                    docker run -d --name your-container -p 81:80 ${DOCKERHUB_REPO}:${IMAGE_TAG}
+                    EOF
+                    '''
+                }
             }
         }
     }
