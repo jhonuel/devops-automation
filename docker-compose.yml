@@ -9,7 +9,7 @@ services:
         links:
             - db
         networks:
-            - default
+            - default1
     db:
         image: mysql:8.0
         ports: 
@@ -25,8 +25,8 @@ services:
             - ./conf:/etc/mysql/conf.d
             - persistent:/var/lib/mysql
         networks:
-            - default
-            - default
+            - default1
+            - default1
     phpmyadmin:
         image: phpmyadmin/phpmyadmin
         links: 
