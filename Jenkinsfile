@@ -1,12 +1,12 @@
 pipeline {
     agent any
 
-  //  stages {
-     //   stage('Verify Docker') {
-    //        steps {
-       //         sh 'docker --version || { echo "Docker ready"; exit 1; }'
-       //     }
-       // }
+    stages {
+        stage('Verify Docker') {
+            steps {
+                sh 'docker --version || { echo "Docker ready"; exit 1; }'
+           }
+        }
         stage('Build') {
             steps {
                 sh 'printenv'
