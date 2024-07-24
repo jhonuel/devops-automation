@@ -12,8 +12,8 @@ pipeline {
 
         //stage('Publish') {
             //steps {
-                withDockerRegistry([credentialsId: 'dockerhub-credentials-id', url: '']) {
-                    sh 'docker push jhonuel/myapp:"$BUILD_ID"'
+             //   withDockerRegistry([credentialsId: 'dockerhub-credentials-id', url: '']) {
+                   // sh 'docker push jhonuel/myapp:"$BUILD_ID"'
                 }
             }
         }
