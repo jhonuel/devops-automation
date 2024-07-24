@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image '24.0.7' // Usa una imagen Docker que tenga Docker instalado
+            image 'Docker:24.0.7' // Usa una imagen Docker que tenga Docker instalado
             args '-v /var/run/docker.sock:/var/run/docker.sock' // Monta el socket Docker del host
         }
     }
