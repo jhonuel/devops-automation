@@ -66,7 +66,7 @@ pipeline {
                     try {
                         sh '''
                             echo "Deploying container..."
-                            docker run -d --name devops-automation -p 80:80 ${DOCKER_IMAGE}:${env.BUILD_ID}
+                            docker run -d --name devops-automation -p 82:80 ${DOCKER_IMAGE}:${env.BUILD_ID}
                         '''
                     } catch (Exception e) {
                         echo "Deploy failed with error: ${e.message}"
