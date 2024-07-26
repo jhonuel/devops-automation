@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         //DOCKER_CREDENTIALS_ID = 'dockerhub-credentials-id'
-        DOCKER_CREDENTIALS_ID = 'jenkins-pwd-01'
+        DOCKER_CREDENTIALS_ID = 'DockerID'
         DOCKER_IMAGE = 'jhonuel/devops-automation'
     }
 
