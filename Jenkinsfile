@@ -2,7 +2,8 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_CREDENTIALS_ID = 'dockerhub-credentials-id'
+        //DOCKER_CREDENTIALS_ID = 'dockerhub-credentials-id'
+        DOCKER_CREDENTIALS_ID = 'jenkins-pwd-01'
         DOCKER_IMAGE = 'jhonuel/devops-automation'
     }
 
